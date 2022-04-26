@@ -14,7 +14,7 @@ const db = mongodb.connection
 
 db.on('error',(error)=> console.error(error))
 db.once('open',()=>console.log('Connected to Database'))
-/*
+
 // the unique ID for each mongo DB document
 var ObjectId = mongodb.ObjectId;
 
@@ -671,5 +671,5 @@ http.listen(3000, function () {
         });
     });
 });
-*/
+
 app.listen(3000,()=>console.log("Server started at port 3000"));
