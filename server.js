@@ -7,9 +7,14 @@ var formidable = require("express-formidable");
 app.use(formidable());
 
 // use mongo DB as database
-var mongodb = require("mongodb");
-var mongoClient = mongodb.MongoClient;
+const mongodb = require('mongoose')
 
+mongodb.connect(process.env.DATABASE_URL)
+const db = mongodb.connection
+
+db.on('error',(error)=> console.error(error))
+db.once('open',()=>console.log('Connected to Database'))
+/*
 // the unique ID for each mongo DB document
 var ObjectId = mongodb.ObjectId;
 
@@ -666,3 +671,5 @@ http.listen(3000, function () {
         });
     });
 });
+*/
+app.listen(3000,()=>console.log("Server started at port 3000"));
